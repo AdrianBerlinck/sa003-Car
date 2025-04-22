@@ -1,0 +1,299 @@
+{
+  "produtos": [
+    {
+      "nome": "freio",
+      "marca": "chevrolet",
+      "quantidade": 1,
+      "id": "1000"
+    },
+    {
+      "nome": "amortecedor",
+      "marca": "fiat",
+      "quantidade": 2,
+      "id": "1001"
+    },
+    {
+      "nome": "vela",
+      "marca": "volkswagen",
+      "quantidade": 4,
+      "id": "1002"
+    },
+    {
+      "nome": "pneu",
+      "marca": "pirelli",
+      "quantidade": 1,
+      "id": "1003"
+    },
+    {
+      "nome": "filtro de ar",
+      "marca": "bosch",
+      "quantidade": 3,
+      "id": "1004"
+    },
+    {
+      "nome": "óleo de motor",
+      "marca": "mobil",
+      "quantidade": 2,
+      "id": "1005"
+    },
+    {
+      "nome": "radiador",
+      "marca": "valeo",
+      "quantidade": 1,
+      "id": "1006"
+    },
+    {
+      "nome": "bateria",
+      "marca": "heliar",
+      "quantidade": 1,
+      "id": "1007"
+    },
+    {
+      "nome": "filtro de combustível",
+      "marca": "fram",
+      "quantidade": 2,
+      "id": "1008"
+    },
+    {
+      "nome": "disco de freio",
+      "marca": "brembo",
+      "quantidade": 4,
+      "id": "1009"
+    },
+    {
+      "nome": "pastilha de freio",
+      "marca": "tekbond",
+      "quantidade": 4,
+      "id": "1010"
+    },
+    {
+      "nome": "embreagem",
+      "marca": "luk",
+      "quantidade": 1,
+      "id": "1011"
+    },
+    {
+      "nome": "câmbio",
+      "marca": "zf",
+      "quantidade": 1,
+      "id": "1012"
+    },
+    {
+      "nome": "motor de partida",
+      "marca": "bosch",
+      "quantidade": 1,
+      "id": "1013"
+    },
+    {
+      "nome": "alternador",
+      "marca": "delphi",
+      "quantidade": 1,
+      "id": "1014"
+    },
+    {
+      "nome": "sensor de oxigênio",
+      "marca": "bosch",
+      "quantidade": 2,
+      "id": "1015"
+    },
+    {
+      "nome": "injeção eletrônica",
+      "marca": "bosch",
+      "quantidade": 1,
+      "id": "1016"
+    },
+    {
+      "nome": "módulo de ignição",
+      "marca": "ngk",
+      "quantidade": 1,
+      "id": "1017"
+    },
+    {
+      "nome": "vela de ignição",
+      "marca": "ngk",
+      "quantidade": 4,
+      "id": "1018"
+    },
+    {
+      "nome": "bobina de ignição",
+      "marca": "bosch",
+      "quantidade": 2,
+      "id": "1019"
+    },
+    {
+      "nome": "farol",
+      "marca": "philips",
+      "quantidade": 2,
+      "id": "1020"
+    },
+    {
+      "nome": "lanterna traseira",
+      "marca": "philips",
+      "quantidade": 2,
+      "id": "1021"
+    },
+    {
+      "nome": "limpador de para-brisa",
+      "marca": "bosch",
+      "quantidade": 2,
+      "id": "1022"
+    },
+    {
+      "nome": "parachoque",
+      "marca": "original",
+      "quantidade": 1,
+      "id": "1023"
+    },
+    {
+      "nome": "retrovisor",
+      "marca": "fábrica",
+      "quantidade": 2,
+      "id": "1024"
+    },
+    {
+      "nome": "vidro lateral",
+      "marca": "guardian",
+      "quantidade": 2,
+      "id": "1025"
+    },
+    {
+      "nome": "porta",
+      "marca": "chevrolet",
+      "quantidade": 2,
+      "id": "1026"
+    },
+    {
+      "nome": "painel de instrumentos",
+      "marca": "magneti marelli",
+      "quantidade": 1,
+      "id": "1027"
+    },
+    {
+      "nome": "buzina",
+      "marca": "hella",
+      "quantidade": 1,
+      "id": "1028"
+    },
+    {
+      "nome": "volante",
+      "marca": "original",
+      "quantidade": 1,
+      "id": "1029"
+    },
+    {
+      "nome": "banco dianteiro",
+      "marca": "original",
+      "quantidade": 2,
+      "id": "1030"
+    },
+    {
+      "nome": "banco traseiro",
+      "marca": "original",
+      "quantidade": 1,
+      "id": "1031"
+    },
+    {
+      "nome": "cinto de segurança",
+      "marca": "original",
+      "quantidade": 5,
+      "id": "1032"
+    },
+    {
+      "nome": "cabo de vela",
+      "marca": "bosch",
+      "quantidade": 4,
+      "id": "1033"
+    },
+    {
+      "nome": "vela aquecedora",
+      "marca": "ngk",
+      "quantidade": 4,
+      "id": "1034"
+    },
+    {
+      "nome": "rolamento de roda",
+      "marca": "skf",
+      "quantidade": 2,
+      "id": "1035"
+    },
+    {
+      "nome": "braço axial",
+      "marca": "nakata",
+      "quantidade": 2,
+      "id": "1036"
+    },
+    {
+      "nome": "bandeja da suspensão",
+      "marca": "cofap",
+      "quantidade": 2,
+      "id": "1037"
+    },
+    {
+      "nome": "mola helicoidal",
+      "marca": "cofap",
+      "quantidade": 2,
+      "id": "1038"
+    },
+    {
+      "nome": "cubo de roda",
+      "marca": "skf",
+      "quantidade": 2,
+      "id": "1039"
+    },
+    {
+      "nome": "semieixo",
+      "marca": "spicer",
+      "quantidade": 2,
+      "id": "1040"
+    },
+    {
+      "nome": "retentor",
+      "marca": "sabó",
+      "quantidade": 4,
+      "id": "1041"
+    },
+    {
+      "nome": "junta homocinética",
+      "marca": "spicer",
+      "quantidade": 2,
+      "id": "1042"
+    },
+    {
+      "nome": "eixo cardan",
+      "marca": "spicer",
+      "quantidade": 1,
+      "id": "1043"
+    },
+    {
+      "nome": "válvula termostática",
+      "marca": "valeo",
+      "quantidade": 1,
+      "id": "1044"
+    },
+    {
+      "nome": "cabeçote",
+      "marca": "original",
+      "quantidade": 1,
+      "id": "1045"
+    },
+    {
+      "nome": "tampa de válvulas",
+      "marca": "original",
+      "quantidade": 1,
+      "id": "1046"
+    },
+    {
+      "nome": "coxim do motor",
+      "marca": "nakata",
+      "quantidade": 2,
+      "id": "1047"
+    },
+    {
+      "nome": "sensor de temperatura",
+      "marca": "bosch",
+      "quantidade": 1,
+      "id": "1048"
+    }
+   
+  ]
+}
