@@ -1,0 +1,44 @@
+#container {
+  margin-top: 60px;
+  padding: 0;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#lista {
+  width: 100%;
+  height: auto;
+
+
+}
+
+form {
+  width: 45%;
+  height: auto;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+li{
+  list-style: none;
+}
+input, button{
+  height: 30px;
+  width: 70%;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 0 2px black;
+
+}
+button{
+  background-color: rgb(41, 202, 41);
+  font-weight: bold;
+}
+button:hover{
+  background-color: green;
+}
