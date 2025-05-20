@@ -6,5 +6,24 @@
       "id": "3b1a"
     }
   ],
-  "produtos": []
+  "produtos": [
+    {
+      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
+      "name": "suspensao",
+      "mark": "chevrolet",
+      "qnt": 22
+    },
+    {
+      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
+      "name": "suspensao",
+      "mark": "chevrolet",
+      "qnt": 22
+    },
+    {
+      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
+      "name": "suspensao",
+      "mark": "chevrolet",
+      "qnt": 22
+    }
+  ]
 }

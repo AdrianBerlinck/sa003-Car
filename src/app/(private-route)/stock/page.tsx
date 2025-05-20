@@ -88,53 +88,60 @@ export default function Stock() {
   return (
     <div id='container'>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder='Nome'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder='Marca'
-          value={mark}
-          onChange={(e) => setMark(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder='Quantidade'
-          value={qnt}
-          onChange={(e) => setQnt(e.target.value)}
-          required
-        />
-        <button type='submit'>
-          {editandoId ? 'Atualizar Produto' : 'Cadastrar Produto'}
-        </button>
-        {editandoId && (
-          <button
-            type='button'
-            onClick={() => {
-              setEditandoId(null);
-              setName('');
-              setMark('');
-              setQnt('');
-            }}
-          >
-            Cancelar Edição
+        <div className='input-container'>
+          <input
+            type="text"
+            placeholder='Nome'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder='Marca'
+            value={mark}
+            onChange={(e) => setMark(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className='input-container'>
+          <input
+            type="number"
+            placeholder='Quantidade'
+            value={qnt}
+            onChange={(e) => setQnt(e.target.value)}
+            required
+          />
+          <button type='submit'>
+            {editandoId ? 'Atualizar Produto' : 'Cadastrar Produto'}
           </button>
-        )}
+          {editandoId && (
+            <button
+              type='button'
+              onClick={() => {
+                setEditandoId(null);
+                setName('');
+                setMark('');
+                setQnt('');
+              }}>
+              Cancelar Edição
+            </button>
+          )}
+        </div>
       </form>
 
       <div id='lista'>
-        <h2>Lista de Produtos</h2>
+        <h2 className='tittle'>Lista de Produtos</h2>
         <ul>
           {produtos.map((produto) => (
             <li key={produto.id}>
-              Nome: {produto.name}, Marca: {produto.mark}, Quantidade: {produto.qnt}{' '}
-              <button onClick={() => handleEdit(produto)}>Editar</button>{' '}
-              <button onClick={() => handleDelete(produto.id)}>Excluir</button>
+              <h2> Nome: {produto.name}</h2>
+              <h2> Marca: {produto.mark}</h2>
+              <h2> Quantidade: {produto.qnt}{' '}</h2>
+
+              <button className='button-editar' onClick={() => handleEdit(produto)}>Editar</button>{' '}
+              <button className='button-deletar' onClick={() => handleDelete(produto.id)}>Excluir</button>
             </li>
           ))}
         </ul>

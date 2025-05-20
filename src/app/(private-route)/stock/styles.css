@@ -1,5 +1,5 @@
 #container {
-  margin-top: 60px;
+  margin-top: 10px;
   padding: 0;
   gap: 5px;
   display: flex;
@@ -16,29 +16,81 @@
 }
 
 form {
-  width: 45%;
-  height: auto;
+  width: 95%;
+  height: 200px;
+  padding: 10px;
   display: flex;
-
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 5px;
+  background-color: black;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
 }
-li{
+
+li {
   list-style: none;
 }
-input, button{
-  height: 30px;
-  width: 70%;
+
+
+.input-container {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.input-container input,
+button {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 40px;
+  text-align: center;
+  justify-content: center;
+  font-size: 18px;
   border-radius: 6px;
   border: none;
   box-shadow: 0 0 2px black;
 
 }
-button{
-  background-color: rgb(41, 202, 41);
+
+.input-container button {
+  background-color: #00ff37;
   font-weight: bold;
+  color: black;
 }
-button:hover{
-  background-color: green;
+
+.input-container button:hover {
+  background-color: rgb(40, 219, 40);
+}
+
+.tittle{
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#lista {
+  margin-top: 20px;
+  background-color: white;
+  min-height: 65vb;
+  width: 95%;
+  border-radius: 10px;
+
+}
+
+ul{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+}
+.button-deletar, .button-editar{
+  width: 90%;
+  border: none;
 }
