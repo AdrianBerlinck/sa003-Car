@@ -54,6 +54,13 @@ export default function NavMenu() {
                         <strong>adrian@gmail.com</strong>
                     </div>
                 </div>
+                <div className={styles.profile}>
+                    <img src="https://github.com/Alan-de-Medeiros.png" />
+                    <div className={styles.profileInfos}>
+                        <strong>Alan de Medeiros</strong>
+                        <strong>alan@gmail.com</strong>
+                    </div>
+                </div>
                 <div className={styles.content}>
                     {itens.map(item => (
                         <Link
