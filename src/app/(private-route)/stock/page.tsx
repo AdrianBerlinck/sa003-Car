@@ -1,197 +1,167 @@
 'use client'
 
-import { TextField, Checkbox } from '@mui/material';
-import styles from './styles.module.css';
-import { useEffect, useState } from 'react';
-
-import { ButtonForm } from '@/components/ButtonForm';
-import { ModalNewMarca } from '@/components/ModalNewMarca';
+import { FormEvent, useEffect, useState } from 'react';
+import axios from 'axios';
+import './styles.css';
 
 
 interface Produto {
-    id: number;
-    nome: string;
-    marca: string;
-    quantidade: number;
-    editando: boolean;
+  id: string;
+  name: string;
+  mark: string;
+  qnt: number;
 }
+
 
 export default function Stock() {
-    const [newProduct, setNewProduct] = useState(true);
-    const [openModal, setOpenModal] = useState(false);
-
-    const [nome, setNome] = useState('');
-    const [marca, setMarca] = useState('');
-    const [quantidade, setQuantidade] = useState<number>(0);
-    const [produtos, setProdutos] = useState<Produto[]>([]);
-
-    const apiUrl = 'http://localhost:3001/produtos';
+  const [name, setName] = useState('');
+  const [mark, setMark] = useState('');
+  const [qnt, setQnt] = useState('');
+  const [produtos, setProdutos] = useState<Produto[]>([]);
+  const [editandoId, setEditandoId] = useState<string | null>(null);
 
 
-    useEffect(() => {
-        const fetchProdutos = async () => {
-            try {
-                const res = await fetch(apiUrl);
-                const data = await res.json();
-                setProdutos(data.map((p: Produto) => ({ ...p, editando: false })));
-            } catch (error) {
-                console.error('Erro ao carregar produtos:', error);
-            }
-        };
-        fetchProdutos();
-    }, []);
+  const fetchProdutos = async () => {
+    try {
+      const response = await fetch('http://localhost:3333/produtos');
+      const data = await response.json();
+      setProdutos(data);
+    } catch (error) {
+      console.error('Erro ao buscar produtos:', error);
+    }
+  };
 
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        handleSalvar();
-    };
+  useEffect(() => {
+    fetchProdutos();
+  }, []);
 
 
-    const handleSalvar = async () => {
-        const novoProduto = {
-            nome,
-            marca,
-            quantidade
-        };
-
-        try {
-            const res = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(novoProduto)
-            });
-
-            const produtoSalvo = await res.json();
-            setProdutos([...produtos, { ...produtoSalvo, editando: false }]);
-            setNome('');
-            setMarca('');
-            setQuantidade(0);
-        } catch (error) {
-            console.error('Erro ao salvar produto:', error);
-        }
-    };
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
 
 
-    const handleEditar = (id: number) => {
-        setProdutos(produtos.map(p => p.id === id ? { ...p, editando: true } : p));
-    };
+    if (editandoId) {
+      try {
+        await axios.put(`http://localhost:3333/produtos/${editandoId}`, {
+          id: editandoId,
+          name,
+          mark,
+          qnt: Number(qnt),
+        });
+        setEditandoId(null); 
+      } catch (error) {
+        console.error('Erro ao editar produto:', error);
+      }
+    } else {
+      const novoProduto: Produto = {
+        id: crypto.randomUUID(),
+        name,
+        mark,
+        qnt: Number(qnt),
+      };
 
 
-    const handleSalvarEdicao = async (produto: Produto) => {
-        try {
-            const res = await fetch(`${apiUrl}/${produto.id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    nome: produto.nome,
-                    marca: produto.marca,
-                    quantidade: produto.quantidade
-                })
-            });
+      try {
+        await axios.post('http://localhost:3333/produtos', novoProduto);
+      } catch (error) {
+        console.error('Erro ao cadastrar produto:', error);
+      }
+    }
 
-            if (res.ok) {
-                setProdutos(produtos.map(p =>
-                    p.id === produto.id ? { ...produto, editando: false } : p
-                ));
-            }
-        } catch (error) {
-            console.error('Erro ao salvar edição:', error);
-        }
-    };
 
-    const handleChangeProduto = (id: number, campo: keyof Produto, valor: any) => {
-        setProdutos(produtos.map(p =>
-            p.id === id ? { ...p, [campo]: valor } : p
-        ));
-    };
+    setName('');
+    setMark('');
+    setQnt('');
+    fetchProdutos();
+  }
 
-    return (
-        <div className={styles.container}>
-            <ModalNewMarca open={openModal} handleClose={() => setOpenModal(!openModal)} />
-            <h1>Estoque</h1>
 
-            <div className={styles.content}>
-                <h2>Entrada de produtos</h2>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    <div className={styles.selectRegister}>
-                        <span>Produto Novo?</span>
-                        <Checkbox checked={newProduct} onChange={(e) => setNewProduct(e.target.checked)} />
-                    </div>
+  async function handleDelete(id: string) {
+    try {
+      await axios.delete(`http://localhost:3333/produtos/${id}`);
+      fetchProdutos();
+    } catch (error) {
+      console.error('Erro ao excluir produto:', error);
+    }
+  }
 
-                    <div className={styles.formSeparetor}>
-                        <TextField
-                            label="Nome do Produto"
-                            variant="outlined"
-                            value={nome}
-                            onChange={(e) => setNome(e.target.value)}
-                            sx={{ width: '40%' }}
-                        />
 
-                        <TextField
-                            label="Marca"
-                            variant="outlined"
-                            value={marca}
-                            onChange={(e) => setMarca(e.target.value)}
-                            sx={{ width: '40%' }}
-                        />
+  function handleEdit(produto: Produto) {
+    setName(produto.name);
+    setMark(produto.mark);
+    setQnt(String(produto.qnt));
+    setEditandoId(produto.id);
+  }
 
-                        <TextField
-                            label="Quantidade"
-                            type="number"
-                            variant="outlined"
-                            value={quantidade}
-                            onChange={(e) => setQuantidade(Number(e.target.value))}
-                            sx={{ width: '20%' }}
-                        />
-                    </div>
 
-                    <div className={styles.buttonGroup}>
-                        <ButtonForm text="Cadastrar" handle={handleSalvar} />
-                    </div>
-                </form>
-            </div>
+  return (
+    <div id='container'>
+      <form onSubmit={handleSubmit}>
+        <div className='input-container'>
+          <input
+            type="text"
+            placeholder='Nome'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder='Marca'
+            value={mark}
+            onChange={(e) => setMark(e.target.value)}
+            required
+          />
+        </div>
 
-            <h1>Lista de Produtos</h1>
-            <div className={styles.productList}>
-                {produtos.map((produto) => (
-                    <div key={produto.id} className={styles.productItem}>
-                        {produto.editando ? (
-                            <>
-                                <TextField
-                                    label="Nome"
-                                    value={produto.nome}
-                                    onChange={(e) => handleChangeProduto(produto.id, 'nome', e.target.value)}
-                                    sx={{ marginRight: '1rem' }}
-                                />
-                                <TextField
-                                    label="Marca"
-                                    value={produto.marca}
-                                    onChange={(e) => handleChangeProduto(produto.id, 'marca', e.target.value)}
-                                    sx={{ marginRight: '1rem' }}
-                                />
-                                <TextField className={styles.quantidade}
-                                    label="Quantidade"
-                                    type="number"
-                                    value={produto.quantidade}
-                                    onChange={(e) => handleChangeProduto(produto.id, 'quantidade', Number(e.target.value))}
-                                    sx={{ widht: '50%'}}
-                                />
-                                <ButtonForm text="Salvar" handle={() => handleSalvarEdicao(produto)} />
-                            </>
-                        ) : (
 
-                            <div className={styles.li}>
-                                <p><strong>Nome:</strong> {produto.nome}</p>
-                                <p><strong>Marca:</strong> {produto.marca}</p>
-                                <p><strong>Quantidade:</strong> {produto.quantidade}</p>
-                                <ButtonForm text="Editar" handle={() => handleEditar(produto.id)} />
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
+        <div className='input-container'>
+          <input
+            type="number"
+            placeholder='Quantidade'
+            value={qnt}
+            onChange={(e) => setQnt(e.target.value)}
+            required
+          />
+          <button type='submit'>
+            {editandoId ? 'Atualizar Produto' : 'Cadastrar Produto'}
+          </button>
+          {editandoId && (
+            <button
+              type='button'
+              onClick={() => {
+                setEditandoId(null);
+                setName('');
+                setMark('');
+                setQnt('');
+              }}>
+              Cancelar Edição
+            </button>
+          )}
+        </div>
+      </form>
 
-        </div >
-    )
+
+      <div id='lista'>
+        <h2 className='tittle'>Lista de Produtos</h2>
+        <ul>
+          {produtos.map((produto) => (
+            <li key={produto.id}>
+              <h2> Nome: {produto.name}</h2>
+              <h2> Marca: {produto.mark}</h2>
+              <h2> Quantidade: {produto.qnt}{' '}</h2>
+              <div className='container-button'>
+                <button className='button-editar' onClick={() => handleEdit(produto)}>Editar</button>{' '}
+                <button className='button-deletar' onClick={() => handleDelete(produto.id)}>Excluir</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }
+
+
+
