@@ -139,9 +139,10 @@ export default function Stock() {
               <h2> Nome: {produto.name}</h2>
               <h2> Marca: {produto.mark}</h2>
               <h2> Quantidade: {produto.qnt}{' '}</h2>
-
-              <button className='button-editar' onClick={() => handleEdit(produto)}>Editar</button>{' '}
-              <button className='button-deletar' onClick={() => handleDelete(produto.id)}>Excluir</button>
+              <div className='container-button'>
+                <button className='button-editar' onClick={() => handleEdit(produto)}>Editar</button>{' '}
+                <button className='button-deletar' onClick={() => handleDelete(produto.id)}>Excluir</button>
+              </div>
             </li>
           ))}
         </ul>

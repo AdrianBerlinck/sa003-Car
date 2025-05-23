@@ -8,22 +8,58 @@
   ],
   "produtos": [
     {
-      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
+      "id": "fbb63b6-15b2-43ed-92d1-509ed0cd216b",
+      "name": "suspenso",
+      "mark": "chevrolet",
+      "qnt": 22
+    },
+    {
+      "id": "fbb63b6f-15b2-43ed-921-509ed0cd216b",
       "name": "suspensao",
       "mark": "chevrolet",
       "qnt": 22
     },
     {
-      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
+      "id": "79e9e458-f5c9-e04-8853-cd62eba9c71c",
+      "name": "teste",
+      "mark": "1",
+      "qnt": 3
+    },
+    {
+      "id": "fbb63b6f-15b2-43ed-9d1-09ed0cd216b",
       "name": "suspensao",
       "mark": "chevrolet",
       "qnt": 22
     },
     {
-      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
+      "id": "fbb63b6f-15b2-43ed-92d1-09ed0cd216b",
       "name": "suspensao",
       "mark": "chevrolet",
       "qnt": 22
+    },
+    {
+      "id": "79e9e458-f5c9-4e4-8853-cd62eba9c71c",
+      "name": "teste",
+      "mark": "1",
+      "qnt": 3
+    }
+  ],
+  "veiculos": [
+    {
+      "id": "3cf1",
+      "modelo": "Gol",
+      "cor": "Vermelho",
+      "quantidade": 4,
+      "portas": 4,
+      "data": "2025-05-22T22:35:55.801Z"
+    },
+    {
+      "id": "77a5",
+      "modelo": "Uno",
+      "cor": "Branco",
+      "quantidade": 4,
+      "portas": 4,
+      "data": "2025-05-22T22:50:27.134Z"
     }
   ]
 }

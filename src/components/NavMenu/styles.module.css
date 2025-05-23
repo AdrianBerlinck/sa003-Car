@@ -17,7 +17,7 @@
     justify-content: center;
 }
 .item:hover {
-    background-color: #ffffff;
+    background-color: rgb(7, 163, 2);
     color: #000000;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .item {
-    border-radius: 0px;
+    border-radius: 30px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -54,11 +54,16 @@
 }
 
 .selected {
-    background-color: #00ff37;
+    background-color: #edfaf3;
+    margin-right: -40px;
+    padding-right: 0px;
+    width: 116%;
+    height: 60px;
+    border-radius: 30 00 0 30px;
 }
 
 .selected:hover {
-    background-color: #ffffff;
+    background-color: #edfaf3;
 }
 
 .selected span {

@@ -22,7 +22,7 @@ form {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: black;
+  background-color: #ffff;
   border-radius: 10px;
   text-align: center;
   justify-content: center;
@@ -52,20 +52,20 @@ button {
   text-align: center;
   justify-content: center;
   font-size: 18px;
-  border-radius: 6px;
+  border-radius: 30px;
   border: none;
   box-shadow: 0 0 2px black;
 
 }
 
 .input-container button {
-  background-color: #00ff37;
+  background-color: #00c52b;
   font-weight: bold;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .input-container button:hover {
-  background-color: rgb(40, 219, 40);
+  background-color: rgb(8, 158, 8);
 }
 
 .tittle{
@@ -78,19 +78,60 @@ button {
 }
 
 #lista {
+  padding: 10px;
   margin-top: 20px;
   background-color: white;
   min-height: 65vb;
   width: 95%;
   border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
 
 }
 
 ul{
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 10px;
 }
 .button-deletar, .button-editar{
-  width: 90%;
   border: none;
+  font-weight: bold;
+  color: white;
+
+}
+li{
+  padding-left: 10px;
+  background-color: #ffff;
+  color: rgb(0, 0, 0);
+  border-radius: 30px;
+  box-shadow: 0 0 2px black;
+}
+.container-button{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 0 10 0 0px;
+}
+
+.button-deletar{
+  background-color: rgb(243, 95, 95);
+
+
+}
+.button-editar{
+
+  background-color: rgb(78, 144, 245);
+
+}
+.button-editar:hover{
+
+  background-color: rgb(0, 102, 255);
+
+}
+.button-deletar:hover{
+  background-color: rgb(241, 41, 41);
+
 }
