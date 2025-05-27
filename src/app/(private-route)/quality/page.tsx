@@ -1,9 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './styles.css';
+import styles from './styles.module.css';
 
 export default function Quality() {
+
   interface VeiculoProduzido {
     id: string;
     modelo: string;
@@ -27,7 +28,7 @@ export default function Quality() {
 
   const fetchVeiculos = async () => {
     try {
-      // Busca todos os veículos e produzidos de uma vez só
+
       const [veiculosRes, produzidosRes] = await Promise.all([
         fetch('http://localhost:3333/veiculos').then(res => res.json()),
         axios.get<VeiculoProduzido[]>('http://localhost:3333/veiculosProduzidos').then(res => res.data),
@@ -55,7 +56,6 @@ export default function Quality() {
         }
       }
 
-      // Atualiza com dados novos + antigos (sem duplicar)
       setVeiculosProduzidos([...produzidosRes, ...novosProduzidos]);
     } catch (error) {
       console.error('Erro ao buscar ou criar veículos:', error);
@@ -78,28 +78,35 @@ export default function Quality() {
     }
   };
 
+  // Função para capitalizar a primeira letra (ex: 'pendente' -> 'Pendente')
+  function capitalize(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   return (
-    <div id="container">
+    <div className={styles.containerQualidade}>
       <div id="lista">
-        <h2 className="tittle">Lista de Produção</h2>
-        <ul>
+        <h2 className={styles.tittle}>Lista de Produção</h2>
+        <ul className={styles.ulLista}>
           {veiculos.map((veiculo) => {
             const produzidos = veiculosProduzidos.filter((vp) => vp.id_producao === veiculo.id);
 
             return (
-              <li key={veiculo.id}>
-                <h2 className='tittle-lote'>
-                  Modelo: {veiculo.modelo}, Cor: {veiculo.cor}, Quantidade: {veiculo.quantidade}, <h2 className='tittle-id'>Código lote: {veiculo.id}</h2>
+              <li key={veiculo.id} className={styles.liLista}>
+                <h2 className={styles.tittleLote}>
+                  Modelo: {veiculo.modelo}, Cor: {veiculo.cor}, Quantidade: {veiculo.quantidade},{' '}
+                  <span className={styles.tittleId}>Código lote: {veiculo.id}</span>
                 </h2>
                 <div>
                   {produzidos.length > 0 ? (
-                    <ul>
+                    <ul className={styles.ulLista}>
                       {produzidos.map((p) => (
-                        <li key={p.id} className={`li-veiculos status-${p.status || 'pendente'}`}>
+                        <li key={p.id} className={`${styles.liVeiculos} ${styles['status' + capitalize(p.status || 'pendente')]}`}>
                           <span>
                             Cod: {p.id} - Modelo: {p.modelo} - Cor: {p.cor} - Portas: {p.portas}
                           </span>
                           <select
+                            className={styles.selectInput}
                             value={p.status || 'pendente'}
                             onChange={(e) =>
                               handleStatusChange(

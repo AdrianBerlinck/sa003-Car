@@ -1,7 +1,7 @@
-'use client'
+'use client';
 import { FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
-import './styles.css';
+import styles from './styles.module.css'; 
 
 interface Produto {
   id: string;
@@ -35,7 +35,6 @@ export default function Stock() {
     event.preventDefault();
 
     if (editandoId) {
-      // Editar produto existente
       try {
         await axios.put(`http://localhost:3333/produtos/${editandoId}`, {
           id: editandoId,
@@ -43,12 +42,11 @@ export default function Stock() {
           mark,
           qnt: Number(qnt),
         });
-        setEditandoId(null); // limpa estado de edição
+        setEditandoId(null);
       } catch (error) {
         console.error('Erro ao editar produto:', error);
       }
     } else {
-      // Criar novo produto
       const novoProduto: Produto = {
         id: crypto.randomUUID(),
         name,
@@ -86,62 +84,77 @@ export default function Stock() {
   }
 
   return (
-    <div id='container'>
-      <form onSubmit={handleSubmit}>
-        <div className='input-container'>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.inputContainer}>
           <input
             type="text"
-            placeholder='Nome'
+            placeholder="Nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className={styles.input}
             required
           />
           <input
             type="text"
-            placeholder='Marca'
+            placeholder="Marca"
             value={mark}
             onChange={(e) => setMark(e.target.value)}
+            className={styles.input}
             required
           />
         </div>
 
-        <div className='input-container'>
+        <div className={styles.inputContainer}>
           <input
             type="number"
-            placeholder='Quantidade'
+            placeholder="Quantidade"
             value={qnt}
             onChange={(e) => setQnt(e.target.value)}
+            className={styles.input}
             required
           />
-          <button type='submit'>
+          <button type="submit" className={styles.button}>
             {editandoId ? 'Atualizar Produto' : 'Cadastrar Produto'}
           </button>
           {editandoId && (
             <button
-              type='button'
+              type="button"
               onClick={() => {
                 setEditandoId(null);
                 setName('');
                 setMark('');
                 setQnt('');
-              }}>
+              }}
+              className={styles.button}
+            >
               Cancelar Edição
             </button>
           )}
         </div>
       </form>
 
-      <div id='lista'>
-        <h2 className='tittle'>Lista de Produtos</h2>
+      <div className={styles.lista}>
+        <h2 className={styles.tittle}>Lista de Produtos</h2>
         <ul>
           {produtos.map((produto) => (
             <li key={produto.id}>
-              <h2> Nome: {produto.name}</h2>
-              <h2> Marca: {produto.mark}</h2>
-              <h2> Quantidade: {produto.qnt}{' '}</h2>
-              <div className='container-button'>
-                <button className='button-editar' onClick={() => handleEdit(produto)}>Editar</button>{' '}
-                <button className='button-deletar' onClick={() => handleDelete(produto.id)}>Excluir</button>
+              <h2>Nome: {produto.name}</h2>
+              <h2>Marca: {produto.mark}</h2>
+              <h2>Quantidade: {produto.qnt}</h2>
+              <div className={styles.containerButton}>
+                <button
+                  className={styles.buttonEditar}
+                  onClick={() => handleEdit(produto)}
+                >
+                  Editar
+                </button>
+                <button
+                  className={styles.buttonDeletar}
+                  onClick={() => handleDelete(produto.id)}
+                >
+                  Excluir
+                </button>
               </div>
             </li>
           ))}

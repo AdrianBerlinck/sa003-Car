@@ -1,0 +1,76 @@
+/* styles.module.css */
+
+.containerQualidade {
+  background-color: aliceblue;
+  padding: 20px;
+}
+
+.ulLista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  margin: 0;
+}
+
+.liLista {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.liVeiculos {
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 6px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectInput {
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Status styles */
+.statusPendente {
+  background-color: aliceblue;
+  color: black;
+}
+
+.statusAprovado {
+  background-color: #c8f7c5;
+  color: #145a32;
+}
+
+.statusReprovado {
+  background-color: #f7c5c5;
+  color: #7f0000;
+}
+
+.tittleId {
+  font-size: 20px;
+  display: flex;
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+.tittleLote {
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tittle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}

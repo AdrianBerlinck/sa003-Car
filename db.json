@@ -79,7 +79,7 @@
       "cor": "Vermelho",
       "portas": 2,
       "id_producao": "ca0a",
-      "status": "pendente"
+      "status": "aprovado"
     },
     {
       "id": "4a8a46e7-1afb-4ac6-b3d5-32d63183bb11",
@@ -87,7 +87,7 @@
       "cor": "Vermelho",
       "portas": 2,
       "id_producao": "ca0a",
-      "status": "pendente"
+      "status": "aprovado"
     },
     {
       "id": "17e1c7e7-008a-4226-9c5d-10551c6048f1",
@@ -95,7 +95,7 @@
       "cor": "Vermelho",
       "portas": 2,
       "id_producao": "ca0a",
-      "status": "pendente"
+      "status": "aprovado"
     },
     {
       "id": "fb2b5ab9-499a-4d79-9b16-2315c5c1d633",
@@ -103,7 +103,7 @@
       "cor": "Branco",
       "portas": 2,
       "id_producao": "8ac3",
-      "status": "pendente"
+      "status": "reprovado"
     },
     {
       "id": "26055f7b-8004-4272-aa4a-66f304bc7a05",
@@ -111,7 +111,7 @@
       "cor": "Branco",
       "portas": 2,
       "id_producao": "8ac3",
-      "status": "pendente"
+      "status": "reprovado"
     },
     {
       "id": "57476d69-e16e-43cb-89c2-147fa1509833",
@@ -127,7 +127,7 @@
       "cor": "Branco",
       "portas": 2,
       "id_producao": "8ac3",
-      "status": "pendente"
+      "status": "aprovado"
     },
     {
       "id": "37ba6af3-e5bf-4775-9d78-8889ac55c81a",
@@ -135,7 +135,7 @@
       "cor": "Branco",
       "portas": 2,
       "id_producao": "8ac3",
-      "status": "pendente"
+      "status": "aprovado"
     },
     {
       "id": "1a43bd9a-c29f-464e-ba66-ba0a8cfc8e82",
@@ -143,7 +143,7 @@
       "cor": "Branco",
       "portas": 2,
       "id_producao": "8ac3",
-      "status": "pendente"
+      "status": "aprovado"
     },
     {
       "id": "d0ce5016-3b30-432c-ba2b-c57f1ef3870c",
@@ -151,7 +151,7 @@
       "cor": "Vermelho",
       "portas": 2,
       "id_producao": "11a1",
-      "status": "pendente"
+      "status": "reprovado"
     },
     {
       "id": "2bbcee18-85af-4eae-b78f-d52da62d38f5",
