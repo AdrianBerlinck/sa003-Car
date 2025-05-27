@@ -4,49 +4,104 @@
       "username": "adrian",
       "password": "1234",
       "id": "3b1a"
-    },
-    {
-      "username": "Alan",
-      "password": "4321",
-      "id": "a1b2"
     }
   ],
   "produtos": [
     {
-      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
+      "id": "fbb63b6-15b2-43ed-92d1-509ed0cd216b",
+      "name": "suspenso",
+      "mark": "chevrolet",
+      "qnt": 22
+    },
+    {
+      "id": "fbb63b6f-15b2-43ed-921-509ed0cd216b",
       "name": "suspensao",
       "mark": "chevrolet",
       "qnt": 22
     },
     {
-      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
-      "name": "suspensao",
-      "mark": "chevrolet",
-      "qnt": 22
-    },
-    {
-      "id": "79e9e458-f5c9-4e04-8853-cd62eba9c71c",
+      "id": "79e9e458-f5c9-e04-8853-cd62eba9c71c",
       "name": "teste",
       "mark": "1",
       "qnt": 3
     },
     {
-      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
+      "id": "fbb63b6f-15b2-43ed-9d1-09ed0cd216b",
       "name": "suspensao",
       "mark": "chevrolet",
       "qnt": 22
     },
     {
-      "id": "fbb63b6f-15b2-43ed-92d1-509ed0cd216b",
-      "name": "suspensao",
-      "mark": "chevrolet",
-      "qnt": 22
+      "id": "dca293ae-15c6-45f6-a572-5a8c896c94ee",
+      "name": "rodas",
+      "mark": "teste1",
+      "qnt": 12
+    }
+  ],
+  "veiculos": [
+    {
+      "id": "3cf1",
+      "modelo": "Gol",
+      "cor": "Vermelho",
+      "quantidade": 3,
+      "portas": 4,
+      "data": "2025-05-22T22:35:55.801Z"
     },
     {
-      "id": "79e9e458-f5c9-4e04-8853-cd62eba9c71c",
-      "name": "teste",
-      "mark": "1",
-      "qnt": 3
+      "id": "77a5",
+      "modelo": "Uno",
+      "cor": "Branco",
+      "quantidade": 4,
+      "portas": 4,
+      "data": "2025-05-22T22:50:27.134Z"
+    },
+    {
+      "id": "2ec8",
+      "modelo": "Uno",
+      "cor": "Vermelho",
+      "quantidade": 3,
+      "portas": 2,
+      "data": "2025-05-26T22:22:29.862Z"
+    },
+    {
+      "id": "713e",
+      "modelo": "teste",
+      "cor": "Branco",
+      "quantidade": 2,
+      "portas": 2,
+      "data": "2025-05-26T22:22:53.822Z"
+    },
+    {
+      "id": "9aa3",
+      "modelo": "Gol",
+      "cor": "Vermelho",
+      "quantidade": 1,
+      "portas": 2,
+      "data": "2025-05-26T23:41:33.280Z"
+    },
+    {
+      "id": "1d97",
+      "modelo": "Uno",
+      "cor": "Vermelho",
+      "quantidade": 1,
+      "portas": 2,
+      "data": "2025-05-26T23:58:55.226Z"
+    }
+  ],
+  "manutencoes": [
+    {
+      "id": "3243",
+      "veiculo": "Palio",
+      "tipo": "Corretiva",
+      "descricao": "nada a declarar",
+      "data": "2025-05-26T22:38:06.926Z"
+    },
+    {
+      "veiculo": "Uno",
+      "tipo": "Preventiva",
+      "descricao": "deu certo",
+      "data": "2025-05-26T22:43:17.633Z",
+      "id": "6809"
     }
   ]
 }

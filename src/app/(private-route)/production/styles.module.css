@@ -64,7 +64,7 @@
   padding: 6px 16px;
   font-weight: 500;
   transition: background-color 0.3s ease;
-  height: 36px; /* para combinar com o tamanho do TextField */
+  height: 36px; 
 }
 
 .addButton:hover {

@@ -1,16 +1,41 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import { Box, Button, FormControl, InputLabel, LinearProgress, MenuItem, Select, TextField, Typography, IconButton} from "@mui/material";
-import { CheckCircle, Delete } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  LinearProgress,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
+import { CheckCircle, Delete, Edit } from "@mui/icons-material";
+
+type Modelo = { nome: string; pecas: string };
+type Veiculo = {
+  id: number;
+  modelo: string;
+  cor: string;
+  quantidade: number;
+  portas: number;
+  data: string;
+};
 
 export default function Production() {
   const [progress, setProgress] = useState(".");
-  const [buttonStatus, setButtonStatus] = useState(true);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [sent, setSent] = useState<boolean>(false);
+  const [buttonEnabled, setButtonEnabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [sent, setSent] = useState(false);
 
-  const [modelos, setModelos] = useState<{ nome: string; pecas: string }[]>([
+  const [modelos, setModelos] = useState<Modelo[]>([
     { nome: "Uno", pecas: "Motor, Roda" },
     { nome: "Gol", pecas: "Volante, Roda" },
   ]);
@@ -21,27 +46,165 @@ export default function Production() {
   const [modeloParaPeca, setModeloParaPeca] = useState("");
   const [novaCor, setNovaCor] = useState("");
   const [corSelecionada, setCorSelecionada] = useState("");
+  const [portas, setPortas] = useState(2);
+  const [quantidade, setQuantidade] = useState(1);
 
-  function handleSubmit() {
-    setIsLoading(true);
-    setButtonStatus(false);
+  const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
 
-    setTimeout(() => {
-      setIsLoading(false);
-      setSent(true);
-      setTimeout(() => {
-        setSent(false);
-        setButtonStatus(true);
-      }, 3000);
-    }, 7000);
-  }
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [veiculoEditando, setVeiculoEditando] = useState<Veiculo | null>(null);
+
+  useEffect(() => {
+    fetchVeiculos();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prevProgress) => (prevProgress === "..." ? "." : prevProgress + "."));
+      setProgress((prev) => (prev === "..." ? "." : prev + "."));
     }, 800);
     return () => clearInterval(timer);
   }, []);
+
+  async function fetchVeiculos() {
+    try {
+      const res = await fetch("http://localhost:3333/veiculos");
+      if (!res.ok) throw new Error("Erro ao buscar veículos");
+      const data: Veiculo[] = await res.json();
+      setVeiculos(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleAddModelo = () => {
+    if (novoModelo.trim() && !modelos.some((m) => m.nome === novoModelo.trim())) {
+      setModelos([...modelos, { nome: novoModelo.trim(), pecas: "" }]);
+      setNovoModelo("");
+    }
+  };
+
+  const handleAddPecas = () => {
+    if (
+      modeloParaPeca.trim() &&
+      pecasModelo.trim() &&
+      modelos.some((m) => m.nome === modeloParaPeca.trim())
+    ) {
+      setModelos(
+        modelos.map((m) =>
+          m.nome === modeloParaPeca.trim()
+            ? {
+                ...m,
+                pecas: m.pecas
+                  ? `${m.pecas}, ${pecasModelo.trim()}`
+                  : pecasModelo.trim(),
+              }
+            : m
+        )
+      );
+      setPecasModelo("");
+    }
+  };
+
+  const handleAddCor = () => {
+    if (novaCor.trim() && !cores.includes(novaCor.trim())) {
+      setCores([...cores, novaCor.trim()]);
+      setNovaCor("");
+    }
+  };
+
+  async function handleSubmit() {
+    if (!modeloParaPeca || !corSelecionada || quantidade < 1) {
+      alert("Preencha o modelo, cor e quantidade corretamente.");
+      return;
+    }
+
+    setIsLoading(true);
+    setButtonEnabled(false);
+
+    const novoVeiculo = {
+      modelo: modeloParaPeca,
+      cor: corSelecionada,
+      quantidade,
+      portas,
+      data: new Date().toISOString(),
+    };
+
+    try {
+      const response = await fetch("http://localhost:3333/veiculos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(novoVeiculo),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Erro ao salvar veículo: ${response.status} - ${errorText}`);
+      }
+
+      setSent(true);
+      await fetchVeiculos();
+
+      setNovoModelo("");
+      setPecasModelo("");
+      setModeloParaPeca("");
+      setNovaCor("");
+      setCorSelecionada("");
+      setPortas(2);
+      setQuantidade(1);
+    } catch (error) {
+      alert("Erro ao salvar veículo. Veja o console para mais detalhes.");
+      console.error("Erro no fetch:", error);
+    } finally {
+      setIsLoading(false);
+      setTimeout(() => {
+        setSent(false);
+        setButtonEnabled(true);
+      }, 3000);
+    }
+  }
+
+  async function handleDelete(id: number) {
+    if (!confirm("Deseja realmente excluir este veículo?")) return;
+    try {
+      const res = await fetch(`http://localhost:3333/veiculos/${id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Erro ao excluir veículo");
+      setVeiculos(veiculos.filter((v) => v.id !== id));
+    } catch (error) {
+      alert("Erro ao excluir veículo. Veja o console.");
+      console.error(error);
+    }
+  }
+
+  function openEditDialog(veiculo: Veiculo) {
+    setVeiculoEditando(veiculo);
+    setEditDialogOpen(true);
+  }
+
+  async function handleEditSave() {
+    if (!veiculoEditando) return;
+
+    if (!veiculoEditando.modelo || !veiculoEditando.cor || veiculoEditando.quantidade < 1) {
+      alert("Preencha todos os campos corretamente.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3333/veiculos/${veiculoEditando.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(veiculoEditando),
+      });
+      if (!res.ok) throw new Error("Erro ao atualizar veículo");
+      await fetchVeiculos();
+      setEditDialogOpen(false);
+      setVeiculoEditando(null);
+    } catch (error) {
+      alert("Erro ao atualizar veículo. Veja o console.");
+      console.error(error);
+    }
+  }
 
   return (
     <div className={styles.body}>
@@ -59,16 +222,7 @@ export default function Production() {
               />
             </div>
             <div className={styles.modeloButton}>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  if (novoModelo && !modelos.some((m) => m.nome === novoModelo)) {
-                    setModelos([...modelos, { nome: novoModelo, pecas: "" }]);
-                    setNovoModelo("");
-                  }
-                }}
-                className={styles.addButton}
-              >
+              <Button variant="contained" onClick={handleAddModelo} className={styles.addButton}>
                 Adicionar Modelo
               </Button>
             </div>
@@ -92,31 +246,7 @@ export default function Production() {
               />
             </div>
             <div className={styles.modeloButton}>
-              <Button
-                variant="contained"
-                className={styles.addButton}
-                onClick={() => {
-                  if (
-                    modeloParaPeca &&
-                    pecasModelo &&
-                    modelos.some((m) => m.nome === modeloParaPeca)
-                  ) {
-                    setModelos(
-                      modelos.map((m) =>
-                        m.nome === modeloParaPeca
-                          ? {
-                              ...m,
-                              pecas: m.pecas
-                                ? `${m.pecas}, ${pecasModelo}`
-                                : pecasModelo,
-                            }
-                          : m
-                      )
-                    );
-                    setPecasModelo("");
-                  }
-                }}
-              >
+              <Button variant="contained" onClick={handleAddPecas} className={styles.addButton}>
                 Adicionar Peças ao Modelo
               </Button>
             </div>
@@ -133,16 +263,7 @@ export default function Production() {
               />
             </div>
             <div className={styles.modeloButton}>
-              <Button
-                variant="contained"
-                className={styles.addButton}
-                onClick={() => {
-                  if (novaCor && !cores.includes(novaCor)) {
-                    setCores([...cores, novaCor]);
-                    setNovaCor("");
-                  }
-                }}
-              >
+              <Button variant="contained" onClick={handleAddCor} className={styles.addButton}>
                 Adicionar Cor
               </Button>
             </div>
@@ -175,6 +296,7 @@ export default function Production() {
                           onClick={(e) => {
                             e.stopPropagation();
                             setModelos(modelos.filter((m) => m.nome !== modelo.nome));
+                            if (modeloParaPeca === modelo.nome) setModeloParaPeca("");
                           }}
                         >
                           <Delete fontSize="small" />
@@ -221,12 +343,26 @@ export default function Production() {
             </div>
 
             <div className={styles.div}>
-              <TextField label="Quantidade" variant="outlined" type="number" />
+              <TextField
+                label="Quantidade"
+                variant="outlined"
+                type="number"
+                value={quantidade}
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  if (value >= 1) setQuantidade(value);
+                }}
+                inputProps={{ min: 1 }}
+              />
               <FormControl sx={{ width: 300 }}>
                 <InputLabel sx={{ backgroundColor: "#fff" }}>
                   Selecione a Quantidade de Portas
                 </InputLabel>
-                <Select>
+                <Select
+                  value={portas}
+                  onChange={(e) => setPortas(Number(e.target.value))}
+                  label="Selecione a Quantidade de Portas"
+                >
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={4}>4</MenuItem>
                 </Select>
@@ -239,13 +375,13 @@ export default function Production() {
               variant="contained"
               color="success"
               onClick={handleSubmit}
-              disabled={!buttonStatus}
+              disabled={!buttonEnabled}
             >
               Enviar para a produção
             </Button>
           </div>
 
-          {isLoading ? (
+          {isLoading && (
             <div className={styles.loading}>
               <Box sx={{ width: "80%" }}>
                 <LinearProgress />
@@ -254,13 +390,118 @@ export default function Production() {
                 </Typography>
               </Box>
             </div>
-          ) : sent ? (
+          )}
+
+          {sent && (
             <div className={styles.sent}>
               <CheckCircle color="success" fontSize="large" />
               <p>Enviado com Sucesso</p>
             </div>
-          ) : null}
+          )}
         </form>
+
+        <div style={{ marginTop: 40 }}>
+          <Typography variant="h5" gutterBottom>
+            Produções Cadastradas
+          </Typography>
+
+          {veiculos.length === 0 ? (
+            <Typography>Nenhuma produção cadastrada.</Typography>
+          ) : (
+            veiculos.map((v) => (
+              <Box
+                key={v.id}
+                sx={{
+                  border: "1px solid #ddd",
+                  borderRadius: 1,
+                  padding: 2,
+                  marginBottom: 2,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Box>
+                  <Typography>
+                    <strong>Modelo:</strong> {v.modelo} | <strong>Cor:</strong> {v.cor} |{" "}
+                    <strong>Qtd:</strong> {v.quantidade} | <strong>Portas:</strong> {v.portas} |{" "}
+                    <strong>Data:</strong> {new Date(v.data).toLocaleDateString()}
+                  </Typography>
+                </Box>
+                <Box>
+                  <IconButton color="primary" onClick={() => openEditDialog(v)}>
+                    <Edit />
+                  </IconButton>
+                  <IconButton color="error" onClick={() => handleDelete(v.id)}>
+                    <Delete />
+                  </IconButton>
+                </Box>
+              </Box>
+            ))
+          )}
+        </div>
+
+        <Dialog open={editDialogOpen} onClose={() => setEditDialogOpen(false)}>
+          <DialogTitle>Editar Veículo</DialogTitle>
+          <DialogContent sx={{ minWidth: 400 }}>
+            <TextField
+              margin="dense"
+              label="Modelo"
+              fullWidth
+              value={veiculoEditando?.modelo || ""}
+              onChange={(e) =>
+                setVeiculoEditando((old) =>
+                  old ? { ...old, modelo: e.target.value } : null
+                )
+              }
+            />
+            <TextField
+              margin="dense"
+              label="Cor"
+              fullWidth
+              value={veiculoEditando?.cor || ""}
+              onChange={(e) =>
+                setVeiculoEditando((old) =>
+                  old ? { ...old, cor: e.target.value } : null
+                )
+              }
+            />
+            <TextField
+              margin="dense"
+              label="Quantidade"
+              type="number"
+              fullWidth
+              inputProps={{ min: 1 }}
+              value={veiculoEditando?.quantidade || 1}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                if (val >= 1)
+                  setVeiculoEditando((old) => (old ? { ...old, quantidade: val } : null));
+              }}
+            />
+            <FormControl fullWidth sx={{ marginTop: 2 }}>
+              <InputLabel>Portas</InputLabel>
+              <Select
+                value={veiculoEditando?.portas || 2}
+                onChange={(e) =>
+                  setVeiculoEditando((old) =>
+                    old ? { ...old, portas: Number(e.target.value) } : null
+                  )
+                }
+                label="Portas"
+              >
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+              </Select>
+            </FormControl>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setEditDialogOpen(false)}>Cancelar</Button>
+            <Button variant="contained" onClick={handleEditSave}>
+              Salvar
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </div>
   );

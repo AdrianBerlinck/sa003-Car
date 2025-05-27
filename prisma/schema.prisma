@@ -8,11 +8,12 @@ datasource db {
 }
 
 model Veicle {
-  id         String @id
+  id         String   @id
   modelo     String
   cor        String
   quantidade Int
   q_port     Int
+  data       DateTime @default(now())
 
   @@map("veicles")
 }
@@ -24,4 +25,14 @@ model Product {
   quantidade Int
 
   @@map("products")
+}
+
+model Maintenance {
+  id        String   @id
+  veiculo   String
+  tipo      String
+  descricao String
+  data      DateTime
+
+  @@map("maintenance")
 }

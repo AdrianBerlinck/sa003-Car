@@ -1,7 +1,7 @@
 'use client '
 import NavMenu from "@/components/NavMenu";
 import { TopMenu } from "@/components/TopMenu";
-import "./styles.css"
+import styles from "./styles.module.css";
 
 export default function PrivateLayout({ children }: { children: React.ReactNode }) {
     return (
