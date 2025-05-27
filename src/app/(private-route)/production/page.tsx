@@ -27,13 +27,11 @@ export default function Production() {
   const [novoModelo, setNovoModelo] = useState("");
   const [novaCor, setNovaCor] = useState("");
 
-  // States para dados do formulário
   const [selectedModelo, setSelectedModelo] = useState("");
   const [selectedCor, setSelectedCor] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [portas, setPortas] = useState("");
 
-  // Animação do loading dots
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prev) => (prev === "..." ? "." : prev + "."));
@@ -72,7 +70,7 @@ export default function Production() {
       setIsLoading(false);
       setSent(true);
 
-      // Limpar campos após envio
+    
       setSelectedModelo("");
       setSelectedCor("");
       setQuantidade("");
@@ -95,7 +93,7 @@ export default function Production() {
       <div className={styles.container}>
         <h2 className="title">Novo Veículo</h2>
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-          {/* Adicionar novo modelo */}
+          {}
           <div style={{ marginBottom: "20px" }}>
             <TextField
               label="Novo Modelo"

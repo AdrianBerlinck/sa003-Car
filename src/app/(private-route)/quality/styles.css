@@ -1,0 +1,58 @@
+
+.container-qualidade{
+    background-color: aliceblue;
+}
+.li-veiculos {
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 6px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+  }
+
+ul, li{
+list-style: none;
+}
+
+ul{
+    flex-direction: column;
+    display: flex;
+    padding: 12px;
+}
+.li-veiculos{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    
+}
+select{
+    border-radius: 10px;
+    border: none;
+}
+  
+ 
+  .status-pendente {
+    background-color: aliceblue; 
+    color: black;
+  }
+  
+  .status-aprovado {
+    background-color: #c8f7c5; 
+    color: #145a32; 
+  }
+  
+  .status-reprovado {
+    background-color: #f7c5c5;
+    color: #7f0000; 
+  }
+  
+.tittle-id{
+   font-size: 20px;
+    display: flex;
+}
+.tittle-lote{
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+}

@@ -36,30 +36,138 @@
       "name": "suspensao",
       "mark": "chevrolet",
       "qnt": 22
-    },
-    {
-      "id": "79e9e458-f5c9-4e4-8853-cd62eba9c71c",
-      "name": "teste",
-      "mark": "1",
-      "qnt": 3
     }
   ],
   "veiculos": [
     {
-      "id": "3cf1",
-      "modelo": "Gol",
+      "id": "11a1",
+      "modelo": "Uno",
       "cor": "Vermelho",
-      "quantidade": 4,
-      "portas": 4,
-      "data": "2025-05-22T22:35:55.801Z"
+      "quantidade": 1,
+      "portas": 2,
+      "data": "2025-05-26T23:59:22.103Z"
     },
     {
-      "id": "77a5",
+      "id": "ca0a",
+      "modelo": "Gol",
+      "cor": "Vermelho",
+      "quantidade": 3,
+      "portas": 2,
+      "data": "2025-05-26T23:59:58.217Z"
+    },
+    {
+      "id": "8ac3",
+      "modelo": "Gol",
+      "cor": "Branco",
+      "quantidade": 6,
+      "portas": 2,
+      "data": "2025-05-27T00:02:06.677Z"
+    },
+    {
+      "id": "b281",
       "modelo": "Uno",
       "cor": "Branco",
-      "quantidade": 4,
+      "quantidade": 2,
       "portas": 4,
-      "data": "2025-05-22T22:50:27.134Z"
+      "data": "2025-05-27T00:02:26.461Z"
+    }
+  ],
+  "veiculosProduzidos": [
+    {
+      "id": "f69c91ef-a118-483a-b3bd-66d742a6e28b",
+      "modelo": "Gol",
+      "cor": "Vermelho",
+      "portas": 2,
+      "id_producao": "ca0a",
+      "status": "pendente"
+    },
+    {
+      "id": "4a8a46e7-1afb-4ac6-b3d5-32d63183bb11",
+      "modelo": "Gol",
+      "cor": "Vermelho",
+      "portas": 2,
+      "id_producao": "ca0a",
+      "status": "pendente"
+    },
+    {
+      "id": "17e1c7e7-008a-4226-9c5d-10551c6048f1",
+      "modelo": "Gol",
+      "cor": "Vermelho",
+      "portas": 2,
+      "id_producao": "ca0a",
+      "status": "pendente"
+    },
+    {
+      "id": "fb2b5ab9-499a-4d79-9b16-2315c5c1d633",
+      "modelo": "Gol",
+      "cor": "Branco",
+      "portas": 2,
+      "id_producao": "8ac3",
+      "status": "pendente"
+    },
+    {
+      "id": "26055f7b-8004-4272-aa4a-66f304bc7a05",
+      "modelo": "Gol",
+      "cor": "Branco",
+      "portas": 2,
+      "id_producao": "8ac3",
+      "status": "pendente"
+    },
+    {
+      "id": "57476d69-e16e-43cb-89c2-147fa1509833",
+      "modelo": "Gol",
+      "cor": "Branco",
+      "portas": 2,
+      "id_producao": "8ac3",
+      "status": "pendente"
+    },
+    {
+      "id": "da315f14-53ea-43ed-aa6f-16bf6c12217e",
+      "modelo": "Gol",
+      "cor": "Branco",
+      "portas": 2,
+      "id_producao": "8ac3",
+      "status": "pendente"
+    },
+    {
+      "id": "37ba6af3-e5bf-4775-9d78-8889ac55c81a",
+      "modelo": "Gol",
+      "cor": "Branco",
+      "portas": 2,
+      "id_producao": "8ac3",
+      "status": "pendente"
+    },
+    {
+      "id": "1a43bd9a-c29f-464e-ba66-ba0a8cfc8e82",
+      "modelo": "Gol",
+      "cor": "Branco",
+      "portas": 2,
+      "id_producao": "8ac3",
+      "status": "pendente"
+    },
+    {
+      "id": "d0ce5016-3b30-432c-ba2b-c57f1ef3870c",
+      "modelo": "Uno",
+      "cor": "Vermelho",
+      "portas": 2,
+      "id_producao": "11a1",
+      "status": "pendente"
+    },
+    {
+      "id": "2bbcee18-85af-4eae-b78f-d52da62d38f5",
+      "modelo": "Uno",
+      "cor": "Branco",
+      "portas": 4,
+      "id_producao": "b281",
+      "status": "pendente"
+    },
+    {
+      "id": "af650153-7e4f-4d36-9b4c-5a3ae1f54a9a",
+      "modelo": "Uno",
+      "cor": "Branco",
+      "portas": 4,
+      "id_producao": "b281",
+      "status": "pendente"
     }
   ]
 }
