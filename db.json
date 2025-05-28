@@ -36,6 +36,12 @@
       "name": "suspensao",
       "mark": "chevrolet",
       "qnt": 22
+    },
+    {
+      "id": "4d9bb15a-64fd-4a05-a908-add9d38d2956",
+      "name": "teste",
+      "mark": "11teste",
+      "qnt": 22
     }
   ],
   "veiculos": [
@@ -119,7 +125,7 @@
       "cor": "Branco",
       "portas": 2,
       "id_producao": "8ac3",
-      "status": "pendente"
+      "status": "aprovado"
     },
     {
       "id": "da315f14-53ea-43ed-aa6f-16bf6c12217e",
@@ -159,7 +165,7 @@
       "cor": "Branco",
       "portas": 4,
       "id_producao": "b281",
-      "status": "pendente"
+      "status": "aprovado"
     },
     {
       "id": "af650153-7e4f-4d36-9b4c-5a3ae1f54a9a",
@@ -167,7 +173,7 @@
       "cor": "Branco",
       "portas": 4,
       "id_producao": "b281",
-      "status": "pendente"
+      "status": "aprovado"
     }
   ]
 }
