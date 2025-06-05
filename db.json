@@ -36,31 +36,9 @@
       "name": "suspensao",
       "mark": "chevrolet",
       "qnt": 22
-    },
-    {
-      "id": "4d9bb15a-64fd-4a05-a908-add9d38d2956",
-      "name": "teste",
-      "mark": "11teste",
-      "qnt": 22
     }
   ],
   "veiculos": [
-    {
-      "id": "11a1",
-      "modelo": "Uno",
-      "cor": "Vermelho",
-      "quantidade": 1,
-      "portas": 2,
-      "data": "2025-05-26T23:59:22.103Z"
-    },
-    {
-      "id": "ca0a",
-      "modelo": "Gol",
-      "cor": "Vermelho",
-      "quantidade": 3,
-      "portas": 2,
-      "data": "2025-05-26T23:59:58.217Z"
-    },
     {
       "id": "8ac3",
       "modelo": "Gol",
@@ -68,14 +46,6 @@
       "quantidade": 6,
       "portas": 2,
       "data": "2025-05-27T00:02:06.677Z"
-    },
-    {
-      "id": "b281",
-      "modelo": "Uno",
-      "cor": "Branco",
-      "quantidade": 2,
-      "portas": 4,
-      "data": "2025-05-27T00:02:26.461Z"
     }
   ],
   "veiculosProduzidos": [
@@ -133,7 +103,7 @@
       "cor": "Branco",
       "portas": 2,
       "id_producao": "8ac3",
-      "status": "aprovado"
+      "status": "pendente"
     },
     {
       "id": "37ba6af3-e5bf-4775-9d78-8889ac55c81a",
@@ -157,7 +127,7 @@
       "cor": "Vermelho",
       "portas": 2,
       "id_producao": "11a1",
-      "status": "reprovado"
+      "status": "aprovado"
     },
     {
       "id": "2bbcee18-85af-4eae-b78f-d52da62d38f5",
@@ -174,6 +144,30 @@
       "portas": 4,
       "id_producao": "b281",
       "status": "aprovado"
+    },
+    {
+      "id": "9e46d44a-3749-4fa4-8965-2d84f1f9aca9",
+      "modelo": "Gol",
+      "cor": "Prata",
+      "portas": 4,
+      "id_producao": "2f6b",
+      "status": "aprovado"
+    },
+    {
+      "id": "fe6fcd37-d9eb-489e-9778-5a153ec1ab52",
+      "modelo": "Gol",
+      "cor": "Prata",
+      "portas": 4,
+      "id_producao": "2f6b",
+      "status": "aprovado"
+    },
+    {
+      "id": "58ccae5d-1480-4748-b449-2f5ef10f87ed",
+      "modelo": "Gol",
+      "cor": "Prata",
+      "portas": 4,
+      "id_producao": "2f6b",
+      "status": "pendente"
     }
   ]
 }

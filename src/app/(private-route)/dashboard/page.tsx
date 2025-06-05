@@ -7,10 +7,7 @@ export default function Dashboard() {
     return (
         <div className={styles.containergraphic}>
             <GraphicQuality />
-            <div className={styles.dashboardgraphic}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThF5vZ0X6EsLNuHm0vsKrJkMoCjEwA14RdMQ&s" alt="" /></div>
-            <div className={styles.dashboardgraphic}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThF5vZ0X6EsLNuHm0vsKrJkMoCjEwA14RdMQ&s" alt="" /></div>
-            <div className={styles.dashboardgraphic}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThF5vZ0X6EsLNuHm0vsKrJkMoCjEwA14RdMQ&s" alt="" /></div>
-
+            
         </div>
     )
 }   
